@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan DOM</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        .btn {
+            border-radius: 5px;
+            background-color: whitesmoke;
+            box-shadow: 0 2px 5px -2px #4a4343;
+            border: none;
+            color: gray;
+            padding: 10px 40px;
+            margin: 10px;
+        }
+
+        .color {
+            background-color: red;
+        }
+
+        .box {
+            border: 1px dashed white;
+            width: 30px;
+            height: 30px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Game Warna Favorit</h1>
+    <button id="changeColor" class="btn">Ubah Warna</button>
+    <br>
+
+    <div class="box red">
+    </div>
+    <input type="range" name="sRed" min="0" max="225">
+
+    <div class="box green">
+    </div>
+    <input type="range" name="sGreen" min="0" max="225">
+
+    <div class="box blue">
+    </div>
+    <input type="range" name="sBlue" min="0" max="225">
+
+
+
+
+    <script>
+        const butn = document.getElementById('changeColor');
+
+        butn.addEventListener('click', function () {
+            // document.body.style.backgroundColor ="black";
+            // document.body.style.color ="white";
+            // document.body.setAttribute('class','color')
+            document.body.classList.toggle('color');
+        });
+
+        const rdColor = document.createElement('button');
+        const txtBtn = document.createTextNode('Random Color ')
+
+        rdColor.appendChild(txtBtn);
+        rdColor.setAttribute("class", "btn");
+        rdColor.classList.add('btn');
+
+        butn.after(rdColor);
+
+        rdColor.addEventListener('click', function () {
+            const r = Math.round(Math.random() * 255 + 1);
+            const g = Math.round(Math.random() * 255 + 1);
+            const b = Math.round(Math.random() * 255 + 1);
+            document.body.style.backgroundColor = `rgb(${r} , ${g} , ${b})`;
+        });
+
+        const slidR = document.querySelector('input[name=sRed]');
+        const slidG = document.querySelector('input[name=sGreen]');
+        const slidB = document.querySelector('input[name=sBlue]');
+
+        slidR.addEventListener('change', function () {
+            const sr = slidR.value;
+            const sg = slidG.value;
+            const sb = slidB.value;
+            document.body.style.backgroundColor = `rgb(${sr}, ${sg}, ${sb})`;
+        });
+
+        slidG.addEventListener('change', function () {
+            const sr = slidR.value;
+            const sg = slidG.value;
+            const sb = slidB.value;
+            document.body.style.backgroundColor = `rgb(${sr}, ${sg}, ${sb})`;
+        });
+
+        slidB.addEventListener('change', function () {
+            const sr = slidR.value;
+            const sg = slidG.value;
+            const sb = slidB.value;
+            document.body.style.backgroundColor = `rgb(${sr}, ${sg}, ${sb})`;
+        });
+
+        document.body.addEventListener('mousemove', function (e) {
+            const xPos = Math.round((e.clientX / window.innerWidth) * 225);
+            const yPos = Math.round((e.clientY / window.innerWidth) * 225);
+            document.body.style.backgroundColor = `rgb(${xPos},${yPos},100)`;
+        });
+    </script>
+</body>
+
+</html>

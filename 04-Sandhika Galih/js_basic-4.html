@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angkot</title>
+</head>
+
+<body>
+
+
+  <script>
+    var star = '';
+
+    for (var i = 0; i < 19; i++) {
+
+      for (var s = 0; s <= i; s++) {
+        if (s <= 10) {
+          star += '*';
+        } else if (s >= 10) {
+          for (var s; s > i; j--) {
+            star += '*';
+          }
+        }
+
+      }
+
+      // for (var s = 0; s < i; s++) {
+      //   star += '*';
+      // }
+
+      star += '\n';
+    }
+
+
+
+    // dibawah ini outputnya
+    // *****
+    //  ****
+    //   ***
+    //    **
+    //     *
+
+    // for (var i = 0; i < 10; i++) {
+
+    //   for (var s = 0; s < i; s++) {
+    //     star += ' ';
+    //   }
+
+    //   for (var j = 10; j > i; j--) {
+    //     star += '*';
+    //   }
+
+    //   star += '\n';
+    // }
+
+
+    console.log(star);
+  </script>
+</body>
+
+</html>

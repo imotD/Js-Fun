@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 101</title>
+</head>
+
+<body>
+  <div id="app">
+    {{ "Yotube " + brand}} <br>
+    {{ pria ?  'dia laki-laki' : 'dia perempuan'}}
+    <br>
+    by {{ brand }} since {{ rilis }} <br>
+    <!-- {{{ footer }}} -->
+  </div>
+
+
+
+  <script src="npm-vue.js"></script>
+  <script>
+    //  Data binding vue
+    //  Mengenal konsep data binding, untuk menggabungkan property yang ada pada DOM agar mudah memanipulasinya secara langsung 
+    //  Sekdar informasi : Jika kita menambahkan tanda '*' :bintang pada kurung breacket {{* name  }} maka itu tandanya : item tersebut tidak bisa diubah.
+    //  Untuk bisa merender kode html bisa memanggilnya dengan 3 bracket : {{{ item }}}
+
+    var vo = new Vue({
+      el: '#app',
+      data: {
+        brand: "Murid Koding",
+        rilis: 2020,
+        footer: "<p>muridkoding &copy; 2020</p>",
+        pria: true
+      },
+    });
+  </script>
+</body>
+
+</html>

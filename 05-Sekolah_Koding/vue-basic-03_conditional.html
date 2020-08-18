@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 101</title>
+</head>
+
+<body>
+  <div id="app">
+    <div v-if=done>
+      {{nama}} - {{umur}}
+    </div>
+    <div v-else>
+      mohon maaf isi data false
+    </div>
+
+    <!-- bedanya 
+    V-IF dan V-SHOW
+    V-if * dirender ulang
+    v-show *menambahkan elemen css dislplay:none -->
+
+
+  </div>
+
+  <script src="npm-vue.js"></script>
+  <script>
+    //     Conditional directives
+    // Mengenal apa itu directive pada vuejs dan juga melihat contoh penggunaan conditional directive pada template html
+
+    var vo = new Vue({
+      el: '#app',
+      data: {
+        nama: "Tommy",
+        umur: 27,
+        biodata: " ",
+        done: false
+      },
+      computed: {
+        biodata: {
+          get: function () {
+            return this.nama + " umurnya " + this.umur
+          },
+          set: function (params) {
+            var cridential = params.split(' ');
+            this.nama = cridential[0]
+            this.umur = cridential[1]
+          }
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

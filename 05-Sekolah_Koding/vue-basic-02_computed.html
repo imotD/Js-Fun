@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 101</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- {{nama}} - {{umur}} -->
+    {{biodata}}
+
+  </div>
+
+  <script src="npm-vue.js"></script>
+  <script>
+    //  Computed properties
+    //  Membuat satu propery selalu tergantung dengan property lainnya dengan computed properties dari vue
+    // failed
+
+    var vo = new Vue({
+      el: '#app',
+      data: {
+        nama: "Tommy",
+        umur: 27,
+        biodata: " ",
+        angka1: '1',
+        angka2: '2'
+      },
+      computed: {
+        biodata: {
+          get: function () {
+            return this.nama + " umurnya " + this.umur
+          },
+          set: function (params) {
+            var cridential = params.split(' ');
+            this.nama = cridential[0]
+            this.umur = cridential[1]
+          }
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

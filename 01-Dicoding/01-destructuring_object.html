@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS</title>
+</head>
+
+<body>
+  <h1>Destructuring</h1>
+  <p>Penulisan destructuring object pada ES6 sintaks menggunakan objek literal { } di sisi kiri dari operasi assignment.
+  </p>
+
+  <script>
+    const profile = {
+      firstName: "Thomp",
+      lastName: "Shon",
+      age: 27
+    }
+
+
+    let firstName = "Dimas";
+    let age = 20;
+
+    // menginisialisasi nilai baru melalui object destruction Assignment
+    ({
+      fristName,
+      lastName
+    } = profile);
+
+
+    // Assigning to Different Local Variable Names
+
+    const {
+      firstName: localFirstName,
+      lastName: localLastName,
+      age: localAge
+    } = profile;
+
+    console.log(localFirstName);
+    console.log(localLastName);
+    console.log(localAge);
+    
+  </script>
+</body>
+
+</html>

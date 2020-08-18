@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS</title>
+</head>
+
+<body>
+  <h1> Arrow Function Expression</h1>
+  <p>ES6 memperkenalkan fungsi baru yang dinamakan arrow function expression atau lebih dikenal sebagai arrow function.
+    Arrow function mirip seperti regular function secara perilaku, namun penulisannya jauh berbeda. Sama seperti
+    namanya,
+    fungsi didefinisikan dengan menggunakan tanda panah (=>) dan tentu penulisan fungsi dengan arrow ini akan lebih
+    singkat.</p>
+
+  <h2>Regular function vs Arrow Function</h2>
+  <p> Sekilas kita sudah tahu seperti apa arrow function, namun mungkin bila kita sama sekali belum pernah mencobanya
+    kita
+    akan dibuat bingung. Pasalnya, penulisannya dibandingkan reguler function jauh berbeda.
+
+    Selain perbedaan dari segi sintaksis, terdapat juga perbedaan perilaku antara keduanya. Regular function dapat
+    berupa
+    function declaration atau function expression, namun arrow function hanya berupa function expression saja. Itu
+    sebabnya arrow function memiliki nama lengkap “arrow function expressions”.</p>
+
+  <script>
+    const favorites = ["Seafood", "Salad", "Nugget", "Soup"];
+    const others = ["Cake", "Pie", "Donut"];
+    const allFavorites = [...favorites, ...others]
+
+    console.log(allFavorites);
+
+    // Rest parameter
+    //  Sebelumnya kita sudah tahu bahwa variadic function dapat menerima banyak parameter, namun apakah kita tahu bagaimana caranya agar function dapat menerima parameter? Jika spread operator adalah pelebur array menjadi beberapa elemen yang berbeda, rest parameter ini adalah kebalikan dari operator tersebut.
+
+    // function sum(...numbers) {
+    //   var result = 0;
+    //   for (let number of numbers) {
+    //     result += number
+    //   }
+    //   return result;
+    // }
+
+    // console.log(sum(1, 2, 3, 4, 5));
+
+    /* output
+    15
+    */
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS</title>
+</head>
+
+<body>
+  <h1>Spreading Operator</h1>
+  <p> Spreading operator dituliskan dengan three consecutive dots (....). Sesuai namanya “Spread”, fitur baru ES6 ini
+    digunakan untuk membentangkan nilai array atau lebih tepatnya iterable object menjadi beberapa elements. Mari kita
+    lihat contoh kode berikut:
+  </p>
+  <p>meleburkan nilai array menjadi beberapa elemen sesuai dengan panjang nilai array-nya, </p>
+  <p>Spread operator ini cocok sekali digunakan sebagai nilai parameter pada variadic functions, seperti console.log()
+    atau Math.max().</p>
+
+  <script>
+    const favorites = ["Seafood", "Salad", "Nugget", "Soup"];
+    const others = ["Cake", "Pie", "Donut"];
+    const allFavorites = [...favorites, ...others]
+
+    console.log(allFavorites);
+
+    // Rest parameter
+    //  Sebelumnya kita sudah tahu bahwa variadic function dapat menerima banyak parameter, namun apakah kita tahu bagaimana caranya agar function dapat menerima parameter? Jika spread operator adalah pelebur array menjadi beberapa elemen yang berbeda, rest parameter ini adalah kebalikan dari operator tersebut.
+
+    // function sum(...numbers) {
+    //   var result = 0;
+    //   for (let number of numbers) {
+    //     result += number
+    //   }
+    //   return result;
+    // }
+
+    // console.log(sum(1, 2, 3, 4, 5));
+
+    /* output
+    15
+    */
+  </script>
+</body>
+
+</html>

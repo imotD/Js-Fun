@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS</title>
+</head>
+
+<body>
+  <h1>ES6 Classes</h1>
+  <p>Dengan hadirnya class pada ES6, pembuatan class di JavaScript menjadi lebih mudah dan juga penulisannya mirip
+    seperti
+    bahasa pemrograman lain berbasis class. Pembuatan class pada ES6 menggunakan keyword class itu sendiri kemudian
+    diikuti dengan nama class-nya.</p>
+
+  <b>constructor</b> biasanya hanya digunakan untuk menetapkan nilai awal pada properti berdasarkan nilai yang
+  dikirimkan pada
+  constructor. Namun sebenarnya kita juga dapat menuliskan logika di dalam constructor jika memang kita memerlukan
+  beberapa kondisi sebelum nilai properti diinisialisasi.
+
+  <script>
+    class Car {
+
+      // Sama seperti function constructor
+      constructor(manufacture, color) {
+        this.manufacture = manufacture;
+        this.color = color;
+        this.enginesActive = false;
+      }
+
+      // Sama seperti Car.prototype.startEngine
+      startEngines() {
+        console.log('Mobil dinyalakan...');
+        this.enginesActive = true;
+      }
+
+      // Sama seperti car.prototype.info
+      info() {
+        console.log(`Manufacture: ${this.manufacture}`);
+        console.log(`Color:  ${this.color}`);
+        console.log(`Engines: ${this.enginesActive ? "Active" : "Inactive"}`);
+      }
+
+    }
+
+    const johnCar = new Car("Honda", "Red");
+    johnCar.startEngines();
+    johnCar.info();
+
+
+    /* output: 
+    Mobil dinyalakan...
+    Manufacture: Honda
+    Color: Red
+    Engines: Active
+    */
+  </script>
+</body>
+
+</html>

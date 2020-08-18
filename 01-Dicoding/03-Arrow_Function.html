@@ -25,29 +25,34 @@
     function declaration atau function expression, namun arrow function hanya berupa function expression saja. Itu
     sebabnya arrow function memiliki nama lengkap “arrow function expressions”.</p>
 
+  <code>
+    <pre>
+    const upperizedNames = ["Dimas", "Widy", "Buchori"]
+    .map(function(name) {
+    return name.toUpperCase();
+    });
+
+    ---------
+
+    const upperizedNames = ["Dimas", "Widy", "Buchori"]
+    .map(name => name.toUpperCase());
+
+    console.log(...upperizedNames);
+    </pre>
+  </code>
+
+  <hr>
+
+  <h2>This Keyword</h2>
+  <p>Perbedaan karakteristik dari arrow function dan regular function selanjutnya ada pada penggunaan keyword this.
+    Penjelasan dari this sendiri menyusul di materi class. Namun kita akan bahas sedikit mengenai ini untuk
+    menggambarkan
+    perbedaan ketika this digunakan oleh arrow function dan regular function.</p>
+  <p>Pada objek, this keyword mengembalikan nilai objeknya sendiri. this dapat digunakan untuk mengelola properti pada
+    objeknya. Namun jika fungsi dipanggil tanpa menggunakan keyword new, this akan memiliki nilai global object (Window
+    jika di browser).</p>
   <script>
-    const favorites = ["Seafood", "Salad", "Nugget", "Soup"];
-    const others = ["Cake", "Pie", "Donut"];
-    const allFavorites = [...favorites, ...others]
 
-    console.log(allFavorites);
-
-    // Rest parameter
-    //  Sebelumnya kita sudah tahu bahwa variadic function dapat menerima banyak parameter, namun apakah kita tahu bagaimana caranya agar function dapat menerima parameter? Jika spread operator adalah pelebur array menjadi beberapa elemen yang berbeda, rest parameter ini adalah kebalikan dari operator tersebut.
-
-    // function sum(...numbers) {
-    //   var result = 0;
-    //   for (let number of numbers) {
-    //     result += number
-    //   }
-    //   return result;
-    // }
-
-    // console.log(sum(1, 2, 3, 4, 5));
-
-    /* output
-    15
-    */
   </script>
 </body>
 

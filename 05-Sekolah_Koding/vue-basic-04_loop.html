@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 101</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(key,member) in members">
+        {{member}} - {{key}}
+      </li>
+    </ul>
+  </div>
+
+  <script src="npm-vue.js"></script>
+  <script>
+    //    Loop list directive
+    // Mengenal apa itu loop/list directive pada vuejs dan juga melihat contoh penggunaan list directive pada vue js
+
+    var vo = new Vue({
+      el: '#app',
+      data: {
+        members: {
+          nama: "tommy",
+          umur: 27,
+          hobby: "gabut"
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

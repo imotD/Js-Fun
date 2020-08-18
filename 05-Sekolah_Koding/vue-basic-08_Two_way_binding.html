@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 101</title>
+</head>
+
+<body>
+  <div id="app">
+    <label for="input">Text Input</label>
+    <textarea id="areaText" :value="variable" @input='clickInput'></textarea>
+    <!-- <p>{{variable}}</p> -->
+    <br>
+    <input type="checkbox" :value="tampil" id="ceklis" @change='clickChange'>
+    <label for="ceklis">Ceklis</label>
+    <p v-if='tampil'>
+      cek
+    </p>
+    <p v-else>
+      tidak cek
+    </p>
+
+  </div>
+
+  <script src="npm-vue.js"></script>
+  <script>
+    var vo = new Vue({
+      el: '#app',
+      data: {
+        variable: 'Hay World',
+        tampil: false
+      },
+      methods: {
+        clickInput(params) {
+          this.variable = params.target.input
+        },
+        clickChange(params) {
+          this.tampil = params.target.checked
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

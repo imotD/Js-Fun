@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 101</title>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="variable = 'Mendarat'">
+      Mendarat
+    </button>
+    <p>{{variable}}</p>
+    <br>
+    <button v-on:mouseover="variable2 = 'Mendarat'">
+      Turun
+    </button>
+    <p>{{variable2}}</p>
+  </div>
+
+  <script src="npm-vue.js"></script>
+  <script>
+    var vo = new Vue({
+      el: '#app',
+      data: {
+        variable: 'Terbang',
+        variable2: 'Naik'
+      },
+    });
+  </script>
+</body>
+
+</html>

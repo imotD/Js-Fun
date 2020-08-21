@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS</title>
+</head>
+  <p>
+    Static method merupakan method yang tidak dapat dipanggil oleh instance dari class, namun dapat dipanggil melalui class-nya sendiri.
+  </p>
+<body>
+  <script>
+    class Dev {
+      constructor(levelPegawai, namaPegawai) {
+        this.levelPegawai = levelPegawai;
+        this.namaPegawai = namaPegawai;
+        this.software = false;
+        this.statusPegawai = false;
+      }
+
+      startWork() {
+        console.log(
+          `Anda saat ini di level ${this.levelPegawai} sejak tahun ${this.namaPegawai}. Selamat Bekerja dan Berkarya!`
+          );
+        console.log(`Status : ${this.statusPegawai ? "Active" : "Inactive"}`);
+      }
+
+      skill() {
+        console.log(`Download TextEditor, Browser dan Terminal..`);
+        console.log(`Download : ${this.software ? "Complated" : "Failed"}`);
+      }
+    }
+
+    class Developer extends Dev {
+      constructor(levelPegawai, namaPegawai, language) {
+        super(levelPegawai, namaPegawai);
+        this.language = language;
+      }
+
+      build() {
+        console.log(`Bahasa ${this.language} terdaftar.`);
+        console.log(`sudah ${this.software}`);
+      }
+
+      skill() {
+        super.skill();
+        console.log(`Skill : ${this.language} sudah didaftarkan`);
+      }
+
+    }
+
+    class Qa extends Dev {
+      constructor(levelPegawai, namaPegawai, system) {
+        super(levelPegawai, namaPegawai);
+        this.system = system;
+      }
+
+      build() {
+        console.log(`Aplikasi ${this.system} terinstal.`);
+        console.log(`sudah ${this.software}`);
+      }
+
+    }
+
+    class itSupport extends Dev {
+      constructor(levelPegawai, namaPegawai, language) {
+        super(levelPegawai, namaPegawai);
+        this.language = language;
+        this.Wirreles = false;
+      }
+
+      build() {
+        console.log(`Bahasa ${this.language} terdaftar.`);
+        console.log(`sudah ${this.software}`);
+        console.log(`Jaringan: ${this.Wirreles ? 'Connected' : 'Not Found'} `)
+      }
+
+      skill() {
+        super.skill();
+        console.log(`Skill : ${this.language} sudah didaftarkan`);
+      }
+
+    }
+
+
+    class AtozpayGaji {
+      static gaji(devs) {
+        devs.forEach(dev => {
+          console.log(`Gaji bulan ini untuk ${dev.namaPegawai} sudah dikirimkan.`)
+        })
+      }
+    }
+
+
+    const userWd = new Developer("Basic", "Tommy", "HTML dan CSS");
+    const userQa = new Qa("Middle", "Suci", "Management Trello");
+    const userIT = new itSupport("Basic", "Tanto", "Linux");
+
+    AtozpayGaji.gaji([userWd, userQa, userIT]);
+  </script>
+</body>
+
+</html>

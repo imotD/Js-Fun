@@ -1,0 +1,37 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Meraih Kebahagiaan",
+      "content": "ini content meraih kebahagiaan"
+    },
+    {
+      "id": 2,
+      "title": "Sukses Menjadi Frontend",
+      "content": "ini content sukses menjadi frontend"
+    },
+    {
+      "id": 3,
+      "title": "Raja Arthur",
+      "content": "ini content raja arthur"
+    },
+    {
+      "id": 4
+    },
+    {
+      "title": "Pernikahan Dini",
+      "content": "",
+      "id": 5
+    },
+    {
+      "title": "Resep emaK",
+      "content": "Masakan Mama",
+      "id": 6
+    },
+    {
+      "title": "Nikah",
+      "content": "Nikah lagi",
+      "id": 7
+    }
+  ]
+}

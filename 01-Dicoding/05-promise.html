@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS</title>
+</head>
+
+<body>
+  <h1>Promise</h1>
+  <h3>Synchronous vs Asynchronous</h3>
+  <p>Dalam synchronous program, jika kita menuliskan dua baris kode maka baris kode yang kedua tidak bisa dieksekusi
+    sebelum mengeksekusi kode pada baris pertama. Kita bisa bayangkan ini dalam kehidupan nyata ketika mengantri membeli
+    kopi di sebuah kedai kopi. Kita tidak bisa mendapatkan kopi sebelum semua antrian di depan kita selesai dilayani,
+    sama hal nya orang yang di belakang kita pun harus menunggu gilirannya.
+
+    Dalam asynchronous program, jika kita menuliskan dua baris kode, kita dapat membuat baris kode kedua dieksekusi
+    tanpa harus menunggu kode pada baris pertama selesai dieksekusi. Dalam dunia nyata kita bisa membayangkan dengan
+    memesan kopi namun memesannya melalui pelayan, di mana sembari kita menunggu pesannya datang, kita dapat melakukan
+    aktivitas lain seperti membuka laptop, menulis, hingga kopi itu datang dengan sendirinya.
+
+    Urutan di mana seseorang mendapatkan minumannya terlebih dahulu memiliki korelasi dengan kapan ia memesan
+    makanannya. Namun bukan hanya itu, faktor ini juga dipengaruhi dengan minuman apa yang ia pesan. Contohnya jika kita
+    memesan kopi espresso sedangkan teman kita hanya memesan air mineral, walaupun kita memesannya terlebih dahulu,
+    tiada jaminan kita akan mendapatkannya duluan. Membuat espresso tentu akan membutuhkan waktu lebih lama dibandingkan
+    dengan menuangkan air mineral pada gelas, kan?
+
+    Dalam program yang dijalankan secara asynchronous pun demikian. Task yang kecil akan lebih dahulu selesai
+    dibandingkan dengan task yang besar, meskipun task yang besar lebih dahulu dijalankan.
+
+  </p>
+
+  <h4>setTimeout</h4>
+  <p>Fungsi setTimeout() merupakan cara yang paling mudah untuk membuat kode kita dijalankan secara asynchronous. Fungsi
+    ini menerima dua buah parameter. Pertama adalah fungsi yang akan dijalankan secara asynchronous, dan kedua adalah
+    nilai number dalam milisecond sebagai nilai tunggu sebelum fungsi dijalankan. Contoh penggunaannya adalah seperti
+    ini:</p>
+
+  <h4>callback function</h4>
+
+  <p>
+    Apa itu callback function? Mari kita bayangkan kembali melalui pandangan dunia nyata. Kita menunggu pesanan kopi
+    datang di meja kita tapi , pada saat itu juga kita tidak bisa berada terus di tempat itu karena ada urusan mendadak.
+    Pada kasus ini mungkin terdapat dua aksi yang bisa kita lakukan:
+
+    <ul>
+      <li> (Synchronous) Kita tetap menunggu di meja hingga kopi itu datang dan kemudian meninggalkan kedai kopi.</li>
+      <li>(Asynchronous) Kita meminta tolong kepada teman kita untuk menerima kopi itu, dan bertemu nanti untuk
+        memberikan
+        kopinya. Sehingga kita tidak perlu menunggu untuk meninggalkan kedai kopi.</li>
+    </ul>
+
+    Nah pada JavaScript, teman kita berperan layaknya callback function. Ia diperintahkan pada sebuah fungsi
+    asynchronous
+    kemudian akan dipanggil/digunakan ketika tugas itu selesai.
+  </p>
+
+  <h5>Callback Hell</h5>
+  <p>
+    Kita sudah mengetahui bahwa callback dibutuhkan untuk mendapatkan nilai yang berasal dari asynchronous function.
+    Lantas bagaimana jika terdapat proses satu sama lain yang saling bergantungan? Contohnya, untuk membuat kue tahapan
+    yang perlu kita lakukan adalah:
+
+    Mempersiapkan bahan
+    Membuat adonan
+    Menyiapkan adonan ke cetakan
+    Memanggang adonan
+
+    Tahapan tersebut sangat tergantung satu sama lain. Kita tidak bisa memanggang adonan sebelum membuat adonannya, dan
+    kita tidak bisa membuat adonan tanpa mempersiapkan bahannya terlebih dahulu. Jika seluruh tahapan tersebut berjalan
+    secara synchronous, mungkin kita bisa melakukanya seperti ini:</p>
+
+
+  <h1>What is Promise?</h1>
+  <p>Promise merupakan salah satu fitur penting dari ES6. Promise ini dapat menggantikan peran callback dengan
+    menggunakan
+    ciri khas fungsi .then-nya itu. Tapi mengapa fitur ini dinamakan dengan “Promise” alias “Janji”?
+
+    Fitur ini berfungsi seperti namanya, yaitu untuk membuat janji. Mari kita analogikan kembali dalam dunia nyata.
+    Ketika
+    kita memesan kopi kepada pelayan, maka secara tidak langsung pelayan tersebut berjanji kepada kita untuk membuatkan
+    kopi kemudian menghidangkannya pada kita. Namun janji bisa hanya tinggal janji. Dalam dunia nyata pun, janji bisa
+    juga
+    tidak terpenuhi, entah itu karena kopi pesanan kita sedang kosong, atau mesin pembuat kopi itu sedang rusak.
+
+    Nah, Promise memiliki perilaku yang sama dengan analogi yang digambarkan tadi. Dalam promise terdapat 3 (tiga)
+    kondisi, yakni:
+
+    <ul>
+      <li>Pending (Janji sedang dalam proses)
+      </li>
+      <li>Fulfilled (Janji terpenuhi)
+      </li>
+      <li>Rejected (Janji gagal terpenuhi)</li>
+    </ul>
+
+    Lantas bagaimana cara membuat janji (Promise) di JavaScript?</p>
+
+    <h1>Promise All</h1>
+    <p> Materi sebelumnya kita belajar bagaimana promise dapat menangani situasi di mana terdapat asynchronous process yang saling membutuhkan untuk melaksanakan tugasnya. Namun bagaimana jika kita ingin menjalankan banyak promise sekaligus namun tidak memperdulikan urutan?
+      
+      Kita sering pergi ke cafe untuk menikmati secangkir kopi bersama teman kuliah ataupun rekan kerja. Ketika memesan kopi, biasanya kita lakukan secara bersamaan. Meskipun kopi yang kita pesan berbeda, tak jarang pelayan menghidangkannya berbarengan dengan kopi yang teman kita pesan. Nah pada kasus inilah pelayan menggunakan teknik Promise.all().
+      
+      Method Promise.all() dapat menerima banyak promise (dalam bentuk array) pada parameternya. Kemudian method tersebut akan mengembalikan nilai seluruh hasil dari promise yang kita tetapkan dalam bentuk array.</p>
+
+  <script>
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CallBack</title>
+</head>
+
+<body>
+   <script>
+      console.log("Selamat datang di Kostan 24");
+
+      const GetRoom = callback => {
+         let room = null;
+         console.log("Sedang mempersiapkan room. Silahkan tunggu...")
+
+         setTimeout(() => {
+            room = "Kamar Selseai";
+            callback(room);
+         }, 3000)
+      }
+      GetRoom(room => {
+         console.log(room);
+
+      })
+   </script>
+</body>
+
+</html>

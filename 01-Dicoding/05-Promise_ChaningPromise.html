@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>JS</title>
+</head>
+
+<body>
+   <h1>Chaining Promise</h1>
+
+   <script>
+      const kost24 = {
+         isKostRoomReady: true,
+         roomStock: {
+            vip: 20,
+            normal: 200,
+            low: 500
+         }
+      }
+
+      const getRooms = (type, stock) => {
+         return new Promise((resolve, reject) => {
+            if (kost24.roomStock[type] >= stock) {
+               kost24.roomStock[type] -= stock;
+               resolve("Kamar ditemukan!")
+            } else {
+               reject("Maaf kamar tidak tersedia")
+            }
+         });
+      }
+
+      const makeRoom = rooms => {
+         return new Promise((resolve, reject) => {
+            if (kost24.isKostRoomReady) {
+               resolve("Kamar bisa digunakan")
+            } else {
+               reject("Maaf kamar sedang tidak bisa digunakan")
+            }
+         })
+      }
+
+      const registrasiAdm = price => {
+         return new Promise(resolve => {
+            resolve("Kamar sudah terpesan")
+         })
+      }
+
+      function pesanKamar(type, stock) {
+         getRooms(type, stock)
+            .then(makeRoom)
+            .then(registrasiAdm)
+            .then(hasilPencarian => {
+               console.log(hasilPencarian);
+            })
+            .catch(gagal => {
+               console.log(gagal);
+            })
+      }
+
+      pesanKamar("normal", 201);
+   </script>
+</body>
+
+</html>

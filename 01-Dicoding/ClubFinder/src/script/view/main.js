@@ -3,20 +3,33 @@ const main = () => {
     const buttonSearchElement = document.querySelector("#searchButtonElement");
     const clubListElement = document.querySelector("#clubList");
 
-    const onButtonSearchClicked = () => {
-        const dataSource = new DataSource(renderResult, fallbackResult);
-        dataSource.searchClub(searchElement.value);
+    const onButtonSearchClicked = async () => {
+        // const dataSource = new DataSource(renderResult, fallbackResult);
+        // DataSource.searchClub(searchElement.value) -- cara 1
+        //     .then(renderResult)
+        //     .catch(fallbackResult)
+
+        try {
+            const result = await DataSource.searchClub(searchElement.value);
+            renderResult(result);
+        } catch (message) {
+            fallbackResult(message)
+        }
     };
 
     const renderResult = results => {
         clubListElement.innerHTML = "";
-        results.forEach( club => {
+        results.forEach(club => {
 
             // const name = club.name;
             // const fanArt = club.fanArt;
             // const description = club.description;
 
-            const { name, fanArt, description } = club;
+            const {
+                name,
+                fanArt,
+                description
+            } = club;
             const clubElement = document.createElement("div");
             clubElement.setAttribute("class", "club");
 

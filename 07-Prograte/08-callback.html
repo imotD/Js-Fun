@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array</title>
+</head>
+
+<body>
+  <blockquote>
+    Dalam JavaScript, function dapat diteruskan sebagai argument.
+    Function yang diteruskan sebagai argument disebut callback function.
+  </blockquote>
+  <code>
+    <pre>
+      const printKen = () => {
+        console.log("Ninja Ken");
+      };
+      
+      // Tambahkan parameter callback ke function call
+      const call = (callback) => {
+        console.log("Memanggil function callback.");
+        // Panggil callback function
+        callback();
+      };
+      
+      // Teruskan printKen sebagai argument dan jalankan function call
+      call(printKen);
+      
+   </pre>
+  </code>
+</body>
+
+</html>

@@ -11,7 +11,7 @@
   <div id="app">
 
     <header>
-      Ini adalah Header
+      Ini adalah Header {{msg}}
     </header>
     <nav>
       Ini adalah Navigasi
@@ -21,8 +21,8 @@
         ini adalah article Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime itaque voluptates earum
         eveniet dicta laboriosam similique tenetur, molestiae, placeat, sit quos id. Quidem, sequi amet.
       </article>
-      <aside>
-        Menu
+      <aside v-once>
+        Menu {{name}}
         <ul>
           <li>List</li>
           <li>Liat</li>
@@ -41,6 +41,8 @@
     const vm = new Vue({
       el: '#app',
       data: {
+        name: 'Buyung Puyuh',
+        msg: 'Hello World',
       }
     })
   </script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS</title>
+</head>
+
+<body>
+  <h1>Destructuring</h1>
+  <p>Penulisan destructuring object pada ES6 sintaks menggunakan objek literal { } di sisi kiri dari operasi assignment.
+  </p>
+
+  <script>
+    const favorites = ["Seafood", "Salad", "Nugget", "Soup"];
+    // const [, , , fourthFood] = favorites;
+
+    let myFood = "Ice Cream";
+    let herFood = "Noodles";
+
+    [myFood , herFood] = favorites;
+
+
+    // console.log(firstFood);
+    // console.log(secondFood);
+    // console.log(thirdFood);
+    // console.log(fourthFood);
+
+    console.log(myFood);
+    console.log(herFood);
+  </script>
+</body>
+
+</html>

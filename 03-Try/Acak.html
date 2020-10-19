@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+</head>
+
+<body>
+
+	<div id="berat"></div>
+	<script>
+		function diet(nafsu_makan, keuangan) {
+			return nafsu_makan + keuangan;
+		}
+
+		//		var hasil = diet(80, 30);
+		//		document.getElementById('berat').innerHTML = hasil;
+
+		//		function cobaMakan() {
+		//			var makan = 'Nasi Yummy';
+		//			var minum = ' Esteh manis'
+		//
+		//			var hasil = makan + minum.toString(5);
+		//			document.getElementById('berat').innerHTML = hasil;
+		//		}
+		//
+		//		cobaMakan();
+
+
+		function jajanMarket() {
+			var belanja = prompt('Masukan Belanjaan', 0);
+
+			if (belanja > 10000) {
+				alert('Selamat, Anda dapat hadiah');
+			} else {
+				alert('Terimakasih sudah berbelanja');
+			}
+
+			document.getElementById('berat').innerHTML = belanja;
+		}
+
+		//		jajanMarket();
+
+
+		function login() {
+			var password = prompt('Masukan Password', 0);
+
+			if (password == "aku") {
+				document.write('<h1>Selamat datang Bos</h1>');
+			} else {
+				document.write('<h1>Password salah. coba lagi!</h1>');
+			}
+			document.write('<p>Terimakasih sudah menggunakan aplikasi kami</p>');
+		}
+
+		//		login();
+
+
+		function nilaiComot() {
+			var nilai = prompt('masukan nilai')
+
+			if (nilai >= 90) {
+				document.write('<h1>Selamat Nilai Kamu Grade A</h1>')
+			} else if (nilai >= 80) {
+				document.write('<h1>Selamat Nilai Kamu Grade B+<h1>')
+			} else if (nilai >= 70) {
+				document.write('<h1>Selamat Nilai Kamu Grade B<1>')
+			} else {
+				document.write('Mohon Maaf kamu gagal. Nilai kamu F')
+			}
+		}
+
+		//		nilaiComot();
+
+		function test() {
+			var nama = 'Tono';
+
+			switch (nama) {
+				case "Tono":
+					alert("ini Tono cuk!");
+					break;
+
+				case "Tini":
+					alert("ini Tini");
+					break;
+
+				case "niat":
+					alert("ini Niat");
+					break;
+
+
+				default:
+					alert("Tidak ada yang cocok");
+
+			}
+		}
+
+		//		test();
+
+		function JodohBambang() {
+			var jodoh = prompt('Masukan Nama Jodoh Bambang');
+			var hasil = "";
+
+			switch (jodoh) {
+				case "wanda":
+					alert("Hanya Cinta dalam Silent");
+					break;
+
+				case "tiara":
+					alert("Hanya Cinta tak Tertolong");
+					break;
+
+				case "tasya":
+					alert("Hanya Cinta dalam Angan");
+					break;
+
+				case "kimihime":
+					alert("Hanya Cinta dalam Youtube");
+					break;
+
+				default:
+					document.write("Jodoh Anda Belum Lahir perkiraan 2030 baru lahir");
+			}
+		}
+
+//		JodohBambang();
+		
+		
+		for( var i=1; i<5; i++){
+			alert(i + "Habis");
+		}
+
+	</script>
+
+	<!--	<script src="app.js"></script>-->
+</body>
+
+</html>
+;

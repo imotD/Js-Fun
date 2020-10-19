@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS</title>
+</head>
+
+<body>
+  <h1>Chaining Promise using async/await</h1>
+  <p>
+    Pertanyaan selanjutnya adalah bagaimana melakukan promise berantai bila menggunakan async/await? Jawabannya adalah
+    sama seperti ketika kita mendapatkan nilai dari function yang berjalan secara synchronous.
+
+    Jika sebelumnya kita melakukan chaining promise dengan method .then() seperti ini:
+  </p>
+
+  <code>
+    <pre>
+      function reserveACoffee(type, miligrams) {
+        getSeeds(type, miligrams)
+        .then(makeCoffee)
+        .then(servingToTable)
+        .then(resolvedValue => {
+          console.log(resolvedValue);
+        })
+        .catch(rejectedReason => {
+          console.log(rejectedReason);
+        })
+       }
+        
+       reserveACoffee("liberica", 80);
+        
+       /* output:
+       Pesanan kopi sudah selesai!
+       */
+     </pre>
+  </code>
+  <p>
+    Dengan pendekatan async/await, kita dapat melakukannya dengan cara seperti ini:
+  </p>
+
+  <code>
+    <pre>
+      async function reserveACoffee(type, miligrams) {
+        try {
+          const seeds = await getSeeds(type, miligrams);
+          const coffee = await makeCoffee(seeds);
+          const result = await servingToTable(coffee);
+          console.log(result);
+        } catch(rejectionReason) {
+          console.log(rejectionReason);
+        }
+       }
+        
+       reserveACoffee("liberica", 80);
+        
+       /* output:
+       Pesanan kopi sudah selesai!
+       */
+    </pre>
+  </code>
+  <p>
+    Async/await ini menjadi fitur baru yang sangat berguna. Terlebih untuk kita yang lebih nyaman menangani proses
+    asynchronous dengan menggunakan gaya synchronous.
+  </p>
+
+  <script>
+
+  </script>
+</body>
+
+</html>

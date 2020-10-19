@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array</title>
+</head>
+
+<body>
+  <blockquote>
+    Method forEach digunakan untuk memanggil setiap nilai disebuah <b>array secara berurutan.</b> Dibawah ini adalah
+    contoh
+    cara mem-print setiap nilai dalam array numbers sesuai urutannya. Mari kita lihat lebih lanjut cara kerjanya pada
+    slide berikutnya.
+  </blockquote>
+  <p>
+    Argument method forEach adalah Arrow Function yang telah kita pelajari dalam ES6 Study III. Dengan method forEach,
+    setiap nilai array akan diberikan kepada argument arrow function, satu per satu, secara berurutan, dan code dalam
+    arrow function akan diterapkan untuk setiap nilai tersebut. Catatan: sebagian besar method yang akan Anda pelajari
+    dalam pelajaran ini digunakan dengan arrow function.
+  </p>
+  <code>
+    <pre>
+      const characters = ["Ninja Ken", "Baby Ben", "Guru Domba", "Birdie"];
+
+      // Cetak semua element didalam array characters dengan menggunakan method forEach
+      characters.forEach((character) =>{
+        console.log(character);
+      });
+
+   </pre>
+  </code>
+</body>
+
+</html>

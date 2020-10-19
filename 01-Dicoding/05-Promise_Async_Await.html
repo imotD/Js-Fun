@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS</title>
+</head>
+
+<body>
+  <h1>Async-Await Syntax</h1>
+  <p>
+    Pembahasan terakhir mengenai asynchronous operator kali ini adalah penggunaan sintak async/await. Apa itu?
+
+    Seperti yang sudah kita ketahui, pada JavaScript callback dan Promise merupakan teknik yang digunakan selama kita
+    berurusan dengan proses asynchronous. Namun penulisan kode akan sedikit berbeda dari proses synchronous. Contohnya,
+    untuk mendapatkan nilai coffee dari sebuah proses asynchronous, kita tidak dapat melakukannya dengan teknik seperti
+    ini:
+  </p>
+  <code>
+    <pre>
+      function makeCoffee() {
+        const coffee = getCoffee(); // Async proses menggunakan promise
+        console.log(coffee);
+       }
+        
+       makeCoffee();
+     </pre>
+  </code>
+
+  <h3>Melainkan, harus menuliskannya seperti ini:</h3>
+  <code>
+    <p>Promise Approach
+    </p>
+    <pre>
+      function makeCoffee() {
+        getCoffee()
+        .then(coffee => {
+          console.log(coffee)
+        })
+       }
+        
+        
+       makeCoffee();
+        
+        
+       /* output
+       Coffee didapatkan!
+       */
+    </pre>
+  </code>
+
+  <code>
+    <p>
+      Callback Approach
+    </p>
+    <pre>
+      function makeCoffee() {
+        getCoffee(function(coffee) {
+          console.log(coffee)
+        })
+       }
+        
+        
+       makeCoffee();
+        
+        
+       /* output
+       Coffee didapatkan!
+       */
+    </pre>
+  </code>
+
+  <p>
+    Namun semenjak ES8 (ECMAScript 2017) kita dapat menuliskan asynchronous process layaknya synchronous process dengan
+    bantuan keyword async dan await.
+
+    Fitur async/await sebenarnya hanya syntactic sugar. Itu berarti secara fungsionalitas bukan merupakan sebuah fitur
+    baru dalam JavaScript. Namun hanya gaya penulisan baru yang dikembangkan dari kombinasi penggunaan Promise dan
+    generator (pembahasan mengenai generator bisa Anda pelajari di sini). Sehingga async/await ini tidak dapat digunakan
+    jika tidak ada Promise.
+  </p>
+  <h1>Using async/await</h1>
+  <p>Lantas bagaimana cara menggunakan async/await ini? Oke kembali lagi pada contoh kode sebelumnya. Namun kita
+    perlihatkan juga fungsi getCoffee() bagaimana ia dibuat menggunakan promise.</p>
+
+  <code>
+    <pre>
+        const getCoffee = () => {
+          return new Promise((resolve, reject) => {
+            const seeds = 100;
+            setTimeout(() => {
+              if(seeds >= 10) {
+                resolve("Coffee didapatkan!");
+              } else {
+                reject("Biji kopi habis!")
+              }
+            }, 1000)
+          })
+         }
+      </pre>
+  </code>
+  <p>Fungsi getCoffee() yang dibangun menggunakan promise.</p>
+  <code>
+    <pre>
+      function makeCoffee() {
+        getCoffee()
+        .then(coffee => {
+          console.log(coffee)
+        })
+       }
+        
+       makeCoffee();
+        
+       /* output
+       Coffee didapatkan!
+       */
+    </pre>
+  </code>
+  <p>
+    Kode di atas merupakan cara biasa kita menggunakan sebuah promise. Untuk mendapatkan nilai coffee, kita dapat
+    memperolehnya di dalam method .then() dari hasil yang dikirimkan oleh resolve.
+
+    Dengan async/await, kita dapat menggunakan promise dengan cara seperti ini:
+    <code>
+      <pre>
+        function makeCoffee() {
+          const coffee = getCoffee();
+          console.log(coffee);
+         }
+          
+         makeCoffee();
+      </pre>
+    </code>
+
+    Namun, tentu dengan menambahkan keyword async dan await seperti ini:
+    <code>
+      <pre>
+        async function makeCoffee() {
+          const coffee = await getCoffee();
+          console.log(coffee);
+         }
+          
+         makeCoffee();
+          
+         /* output
+         Coffee didapatkan!
+         */
+      </pre>
+    </code>
+    Keyword async digunakan untuk memberitahu JavaScript untuk menjalankan fungsi makeCoffee() secara asynchronous. Lalu
+    keyword await digunakan untuk menghentikan proses pembacaan kode selanjutnya sampai fungsi getCoffee() mengembalikan
+    nilai promise resolve.
+  </p>
+  <blockquote>
+    “Walaupun await menghentikan proses pembacaan kode selanjutnya pada fungsi makeCoffee. Tapi ini tidak akan
+    mengganggu proses runtime sesungguhnya pada JavaScript (global). Karena fungsi makeCoffee berjalan secara
+    asynchronous. Kita tidak dapat menggunakan await tanpa membuat function dalam scope-nya berjalan secara
+    asynchronous.”
+  </blockquote>
+
+  <script>
+
+  </script>
+</body>
+
+</html>

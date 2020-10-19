@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balademy University</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <header>
+      <h1>Ini adalah {{getName()}}</h1>
+    </header>
+    <nav>
+      <p>Ini {{addName('Shanum Kania Alfarizqia')}}</p>
+    </nav>
+    <main>
+      <article>
+        ini adalah article Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime itaque voluptates earum
+        eveniet dicta laboriosam similique tenetur, molestiae, placeat, sit quos id. Quidem, sequi amet.
+      </article>
+      <aside v-once>
+        Menu <code>{{isActive ? 'Complite' : 'Null'}}</code>
+        <ul>
+          <li>{{vueMasters}}</li>
+          <li>Liat</li>
+          <li>Lias</li>
+        </ul>
+      </aside>
+    </main>
+    <footer>
+      <p>baledemy &copy; 2020</p>
+    </footer>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        name: 'Buyung Puyuh',
+        msg: 'Hello World',
+        isActive: true,
+        qty:1
+      },
+      methods: {
+        getName() {
+          return `hello , ${this.name}`
+        },
+        addName(namabaru) {
+          this.name = namabaru
+          return this.name
+        }
+      },
+      computed: {
+        totalBayar() {
+          return this.qty * 1000
+        },
+        vueMasters(){
+          return this.name + this.msg
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

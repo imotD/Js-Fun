@@ -11,7 +11,7 @@
     }
 
     .succes {
-      background-color: green;
+      background-color: greenyellow;
     }
 
     .danger {
@@ -30,6 +30,9 @@
     <nav>
       <p>Ini adalah latihan vue <b>{{addName('de Shanum')}}</b></p>
       <p>Nomor Kepegawaian : 10102{{cvc}}</p>
+      <button @click="addNumber()">
+        Add Number
+      </button>
     </nav>
     <main>
       <h5>Termasuk Anggota Bilangan <i>{{bilanganInfo}}</i> </h5>
@@ -42,7 +45,8 @@
       </article>
       <br>
       <aside v-once>
-        Menu <code style="background-color: greenyellow; padding: 3px;"> {{isActive ? 'Complite' : 'Null'}}</code>
+        Menu <code :class="[ isActive ? 'succes' : 'danger' ]" style="padding: 3px;">
+          {{isActive ? 'Complite' : 'Null'}}</code>
         <ul>
           <li v-for="fam in family">
             {{fam}}
@@ -68,7 +72,8 @@
         qty: 1,
         cvc: 7,
         login: '<a href="#">Login</a>',
-        gambar:'https://docs.vuejs.id/images/logo.png'
+        gambar: 'https://docs.vuejs.id/images/logo.png',
+        date: ''
       },
       methods: {
         getName() {
@@ -78,13 +83,16 @@
           this.name = namabaru
           return this.name
         },
+        addNumber() {
+          return this.cvc++
+        }
       },
       computed: {
         totalBayar() {
           return this.qty * 1000
         },
-        bilanganInfo(){
-          return this.cvc%2 === 0 ? 'Genap' : 'Ganjil'
+        bilanganInfo() {
+          return this.cvc % 2 === 0 ? 'Genap' : 'Ganjil'
         }
       },
     })

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balademy University</title>
+  <style>
+    #app {
+      padding: 10px 100px;
+    }
+
+    .succes {
+      background-color: green;
+    }
+
+    .danger {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+    <header>
+      <img width="100" src="https://docs.vuejs.id/images/logo.png" alt="vue-brand">
+      <h1>Hi! <span v-text="name"></span></h1>
+    </header>
+    <nav>
+      <p>Ini adalah latihan vue <b>{{addName('de Shanum')}}</b></p>
+      <p>Nomor Kepegawaian : 10102{{cvc}}</p>
+    </nav>
+    <main>
+      <h5>Termasuk Anggota Bilangan <i>{{bilanganInfo}}</i> </h5>
+      <p v-html="login"></p>
+      <article>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae temporibus adipisci consequuntur ea quidem
+        itaque ad accusantium aut eum amet molestiae voluptatum quae facere quis, ex veritatis id dignissimos vitae non,
+        minus exercitationem placeat. Suscipit, qui. Dicta voluptate dolore doloribus? Dolor, magni labore vel
+        voluptatibus harum necessitatibus odio hic ad.
+      </article>
+      <br>
+      <aside v-once>
+        Menu <code style="background-color: greenyellow; padding: 3px;"> {{isActive ? 'Complite' : 'Null'}}</code>
+        <ul>
+          <li v-for="fam in family">
+            {{fam}}
+          </li>
+        </ul>
+      </aside>
+    </main>
+    <footer>
+      <p>baledemy &copy; 2020</p>
+    </footer>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        name: 'Buyung Puyuh',
+        msg: 'Hello World',
+        family: ['Ayah', 'Ibu', 'Anak'],
+        isActive: true,
+        qty: 1,
+        cvc: 7,
+        login: '<a href="#">Login</a>'
+      },
+      methods: {
+        getName() {
+          return `hello , ${this.name}`
+        },
+        addName(namabaru) {
+          this.name = namabaru
+          return this.name
+        },
+      },
+      computed: {
+        totalBayar() {
+          return this.qty * 1000
+        },
+        bilanganInfo(){
+          return this.cvc%2 === 0 ? 'Genap' : 'Ganjil'
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

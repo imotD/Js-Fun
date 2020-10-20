@@ -5,28 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Balademy University</title>
+  <style>
+    .succes {
+      background-color: green;
+    }
+
+    .danger {
+      background-color: red;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
 
     <header>
-      <h1>Ini adalah {{getName()}}</h1>
+      <img width="100" src="https://docs.vuejs.id/images/logo.png" alt="vue-brand">
+      <h1>Hi {{getName()}}</h1>
     </header>
     <nav>
-      <p>Ini {{addName('Shanum Kania Alfarizqia')}}</p>
+      <p>Ini adalah latihan vue <b>{{addName('de Shanum')}}</b></p>
     </nav>
     <main>
       <article>
-        ini adalah article Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime itaque voluptates earum
-        eveniet dicta laboriosam similique tenetur, molestiae, placeat, sit quos id. Quidem, sequi amet.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae temporibus adipisci consequuntur ea quidem
+        itaque ad accusantium aut eum amet molestiae voluptatum quae facere quis, ex veritatis id dignissimos vitae non,
+        minus exercitationem placeat. Suscipit, qui. Dicta voluptate dolore doloribus? Dolor, magni labore vel
+        voluptatibus harum necessitatibus odio hic ad.
       </article>
+      <br>
       <aside v-once>
-        Menu <code>{{isActive ? 'Complite' : 'Null'}}</code>
+        Menu <code style="background-color: greenyellow; padding: 3px;"> {{isActive ? 'Complite' : 'Null'}}</code>
         <ul>
-          <li>{{vueMasters}}</li>
-          <li>Liat</li>
-          <li>Lias</li>
+          <li v-for="fam in family">
+            {{fam}}
+          </li>
         </ul>
       </aside>
     </main>
@@ -43,8 +56,9 @@
       data: {
         name: 'Buyung Puyuh',
         msg: 'Hello World',
+        family: ['Ayah', 'Ibu', 'Anak'],
         isActive: true,
-        qty:1
+        qty: 1
       },
       methods: {
         getName() {
@@ -53,15 +67,12 @@
         addName(namabaru) {
           this.name = namabaru
           return this.name
-        }
+        },
       },
       computed: {
         totalBayar() {
           return this.qty * 1000
         },
-        vueMasters(){
-          return this.name + this.msg
-        }
       },
     })
   </script>

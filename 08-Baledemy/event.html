@@ -17,6 +17,22 @@
     .danger {
       background-color: red;
     }
+
+    button {
+      border: 0;
+      border-radius: 2px;
+      box-shadow: 0 2px 2px -1px black;
+      padding: 4px;
+    }
+
+    .active {
+      background-color: greenyellow ;
+      box-shadow: 0 2px 2px -1px orange;
+    }
+
+    .active:active {
+      background-color: yellow;
+    }
   </style>
 </head>
 
@@ -30,9 +46,9 @@
     <nav>
       <p>Ini adalah latihan vue <b>{{addName('de Shanum')}}</b></p>
       <p>Nomor Kepegawaian : 10102{{cvc}}</p>
-      <button @click="addNumber()">
-        Add Number
-      </button>
+      <button :class="{active: nav === 'add'}" @click="addNumber()">Add</button>
+      <button :class="{active: nav === 'update'}" @click="nav = 'update'">Update</button>
+      <button :class="{active: nav === 'remove'}" @click="nav = 'remove'">Remove</button>
     </nav>
     <main>
       <h5>Termasuk Anggota Bilangan <i>{{bilanganInfo}}</i> </h5>
@@ -73,7 +89,7 @@
         cvc: 7,
         login: '<a href="#">Login</a>',
         gambar: 'https://docs.vuejs.id/images/logo.png',
-        date: ''
+        nav: 'add'
       },
       methods: {
         getName() {
@@ -84,6 +100,7 @@
           return this.name
         },
         addNumber() {
+          this.nav = 'add'
           return this.cvc++
         }
       },

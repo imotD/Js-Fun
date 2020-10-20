@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Balademy University</title>
   <style>
+    #app {
+      padding: 10px 100px;
+    }
+
     .succes {
       background-color: green;
     }
@@ -25,8 +29,10 @@
     </header>
     <nav>
       <p>Ini adalah latihan vue <b>{{addName('de Shanum')}}</b></p>
+      <p>Nomor Kepegawaian : 10102{{cvc}}</p>
     </nav>
     <main>
+      <h5>Termasuk Anggota Bilangan <i>{{bilanganInfo}}</i> </h5>
       <article>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae temporibus adipisci consequuntur ea quidem
         itaque ad accusantium aut eum amet molestiae voluptatum quae facere quis, ex veritatis id dignissimos vitae non,
@@ -58,7 +64,8 @@
         msg: 'Hello World',
         family: ['Ayah', 'Ibu', 'Anak'],
         isActive: true,
-        qty: 1
+        qty: 1,
+        cvc: 7
       },
       methods: {
         getName() {
@@ -73,6 +80,9 @@
         totalBayar() {
           return this.qty * 1000
         },
+        bilanganInfo(){
+          return this.cvc%2 === 0 ? 'Genap' : 'Ganjil'
+        }
       },
     })
   </script>

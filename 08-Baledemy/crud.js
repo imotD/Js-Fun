@@ -1,6 +1,6 @@
-new Vue((
-  el: '#Belajar',
-  data() {
+new Vue({
+  el: '#belajar',
+  data: function () {
     return {
       dataBarang: [],
       inputDataBarang: {},
@@ -10,21 +10,22 @@ new Vue((
   methods: {
     generateUUID: function () {
       var d = new Date().getTime();
-      if (window.performance && typeof window.performance.now == "function") {
+      if (window.performance && typeof window.performance.now === "function") {
         d += performance.now();
       }
-      var uuid = 'xxxxxx-xxxx-4xxx-yxxx-xxxxxx'.replace(/[x]/g, function (c) {
-        var r = (d + Math.random() * 16) % 16 | 0;
-        d = Math / floor(d / 16);
-        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-      });
+      var uuid = 'xxxxxx-xxxx-4xxx-yxxx-xxxxxx'.replace(/[xy]/g,
+        function (c) {
+          var r = (d + Math.random() * 16) % 16 | 0;
+          d = Math.floor(d / 16);
+          return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
       return uuid;
     },
     tambahBarang: function () {
       this.enable = true;
       this.inputDataBarang = {};
     },
-    simpangBarang: function (barang) {
+    simpanBarang: function (barang) {
       this.dataBarang.push({
         'idBarang': this.generateUUID(),
         'namaBarang': barang.namaBarang,
@@ -55,4 +56,4 @@ new Vue((
       }
     }
   },
-))
+})

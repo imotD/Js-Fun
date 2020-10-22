@@ -61,6 +61,9 @@
         voluptatibus harum necessitatibus odio hic ad.
       </article>
       <br>
+      <ul>
+        <li v-for="i in kelas" v-text="i"></li>
+      </ul>
       <p>{{kelas}}</p>
       <div>
         <label><input type="checkbox" value="Hadir" v-model="kelas">Hadir</label>
@@ -99,7 +102,7 @@
         login: '<a href="#">Login</a>',
         gambar: 'https://docs.vuejs.id/images/logo.png',
         nav: 'add',
-        kelas: []
+        kelas: ['Vue', 'Python', 'Sass']
       },
       methods: {
         getName() {

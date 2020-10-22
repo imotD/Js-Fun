@@ -63,6 +63,8 @@
       </article>
       <br>
 
+      <input type="text" placeholder="Masukan Kelas" v-on:keyup.enter="submit">
+
       <h3>Daftar Kelas ({{kelas.length}})</h3>
       <ul v-if="kelas.length > 1">
         <li v-for="(item , index) of kelas">
@@ -124,7 +126,7 @@
         login: '<a href="#">Login</a>',
         gambar: 'https://docs.vuejs.id/images/logo.png',
         nav: 'add',
-        kelas: [],
+        kelas: ['Youtube', 'Python', 'Vue', 'React'],
         numbers: [2, 3, 4, 5, 6, 7]
       },
       methods: {
@@ -146,6 +148,11 @@
         },
         gantiMenu(data) {
           return this.nav = data
+        },
+        submit(e) {
+          let text = e.target.value
+          this.kelas.push(text)
+          e.target.value = ''
         }
       },
       computed: {

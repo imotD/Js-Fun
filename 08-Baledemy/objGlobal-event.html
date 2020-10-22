@@ -46,9 +46,10 @@
     <nav>
       <p>Ini adalah latihan vue <b>{{addName('de Shanum')}}</b></p>
       <p>Nomor Kepegawaian : 10102{{cvc}}</p>
-      <button :class="{active: nav === 'add'}" @click="addNumber()">Add</button>
-      <button :class="{active: nav === 'update'}" @click="nav = 'update'">Update</button>
-      <button :class="{active: nav === 'remove'}" @click="nav = 'remove'">Remove</button>
+      <button @click="addNumber()">change</button>
+      <a href="#" :class="{active: nav === 'add'}" @click="gantiMenu('add', $event)">Add</a>
+      <a href="#" :class="{active: nav === 'update'}" @click="gantiMenu('update', $event)">Update</a>
+      <a href="#" :class="{active: nav === 'remove'}" @click="gantiMenu('remove', $event)">Remove</a>
     </nav>
     <main>
       <h5>Termasuk Anggota Bilangan <i>{{bilanganInfo}}</i> </h5>
@@ -142,6 +143,10 @@
           return data.filter(angka => {
             return angka % 2 == 0
           })
+        },
+        gantiMenu(data , event) {
+          event.preventDefault()  
+          return this.nav = data
         }
       },
       computed: {

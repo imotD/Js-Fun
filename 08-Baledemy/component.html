@@ -82,7 +82,8 @@
     <header-component name="Shanum"></header-component>
 
     <main>
-      <main-component />
+      <main-component :items="kelas" menu="Web Dev" :input="kelasBaru"></main-component>
+      <component-a></component-a>
     </main>
 
     <footer-component></footer-component>
@@ -91,6 +92,11 @@
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
   <script>
+    const ComponentA = {
+      template: '<div><span>Component Local</span></div>'
+    }
+
+
     Vue.component('header-component', {
       props: ['name'],
       template: `
@@ -121,15 +127,17 @@
     })
 
     Vue.component('main-component', {
+      props: ['input', 'items', 'menu'],
       template: `
        <div>
         <div class="img-header">
           <img :src="kelasImg" alt="brand" width="350">
         </div>
 
-        <input type="text" placeholder="Masukan Kelas" v-on:keyup.enter="submit" v-model="kelasBaru">
+        <input type="text" placeholder="Masukan Kelas" v-on:keyup.enter="submit" v-model="input">
 
         <article>
+        <h4>Menu {{ menu }}</h4>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae temporibus adipisci consequuntur ea
           quidem
           itaque ad accusantium aut eum amet molestiae voluptatum quae facere quis, ex veritatis id dignissimos vitae
@@ -137,10 +145,10 @@
           minus exercitationem placeat. Suscipit, qui. Dicta voluptate dolore doloribus? Dolor, magni labore vel
           voluptatibus harum necessitatibus odio hic ad.</p>
         </article>
-          <h3>Daftar Kelas ({{kelas.length}})</h3>
+          <h3>Daftar Kelas ({{items.length}})</h3>
 
-          <ul v-if="kelas.length > 1">
-            <li v-for="(item , index) of kelas">
+          <ul v-if="items.length > 1">
+            <li v-for="(item , index) of items">
               {{ index+1 }} - {{item}}
             </li>
           </ul>
@@ -167,8 +175,6 @@
           family: ['Html', 'Css', 'Js'],
           isActive: true,
           kelasImg: 'https://scotch-res.cloudinary.com/image/upload/w_1050,q_auto:good,f_auto/v1559156220/a2dnwyg5xotyhvyhmscj.jpg',
-          kelas: ['Youtube', 'Python', 'Vue', 'React'],
-          kelasBaru: '',
         }
       },
 
@@ -185,8 +191,12 @@
 
     const vm = new Vue({
       el: '#app',
+      components: {
+        'component-a': ComponentA
+      },
       data: {
-
+        kelas: ['Youtube', 'Python', 'Vue', 'React'],
+        kelasBaru: '',
       },
       methods: {},
       computed: {},

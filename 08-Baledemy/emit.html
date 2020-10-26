@@ -87,7 +87,9 @@
       <component-a></component-a>
     </main>
 
-    <footer-component></footer-component>
+    <footer-component>
+      <p>Murid Koding &copy; 2020</p>
+    </footer-component>
 
   </div>
 
@@ -117,7 +119,7 @@
     Vue.component('footer-component', {
       template: `
       <footer>
-        <p>Murid Koding &copy; 2020</p>
+       <slot></slot>
      </footer>
       `
     })
@@ -129,7 +131,7 @@
         <div class="img-header">
           <img :src="kelasImg" alt="brand" width="350">
         </div>
-
+        <h4>Tambah Kelas</h4>
         <input type="text" placeholder="Masukan Kelas" @keyup.enter="$emit('submitkelas', $event)">
 
         <article>

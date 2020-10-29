@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balademy University</title>
+  <style>
+    #app {
+      padding: 10px 100px;
+    }
+
+    .succes {
+      background-color: greenyellow;
+    }
+
+    .danger {
+      background-color: red;
+    }
+
+    button {
+      border: 0;
+      border-radius: 2px;
+      box-shadow: 0 2px 2px -1px black;
+      padding: 4px;
+    }
+
+    .active {
+      color: #55b983;
+      box-shadow: 0 2px 2px -1px orange;
+    }
+
+    .active:active {
+      background-color: yellow;
+    }
+
+    header img {
+      border: 2px solid #55b983;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+    }
+
+    header {
+      display: flex;
+    }
+
+    header h1 {
+      padding: 0 15px;
+    }
+
+    header code {
+      color: blue;
+      font-size: 10px;
+    }
+
+    nav {
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: green;
+      text-decoration: none;
+      background-color: whitesmoke;
+      padding: 10px;
+    }
+
+    main {
+      margin: 20px 0;
+    }
+
+    main .img-header {
+      text-align: center;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+    <header-component name="Shanum"></header-component>
+    <nav>
+      <router-link to="/">Home</router-link>
+      <router-link to="/kelas">Kelas</router-link>
+      <router-link to="/about">About</router-link>
+    </nav>
+    <main>
+      <router-view :items="kelas" :submitkelas="submitKelas" menu="Web Dev" @hapuskelas="hapusKelas"
+        @submitkelas="submitKelas"></router-view>
+    </main>
+
+    <footer-component>
+      <p>Murid Koding &copy; 2020</p>
+    </footer-component>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+
+  <script>
+    Vue.component('header-component', {
+      props: ['name'],
+      template: `
+    <header>
+      <img width="100" src="https://docs.vuejs.id/images/logo.png" alt="vue-brand">
+      <h1>Hi! <span>{{name}}</span></h1>
+      <code>Online</code>
+    </header>
+    <nav>
+      <a href="#" :class="{active: nav === 'add'}" @click.prevent="gantiMenu('add')">Add</a>
+      <a href="#" :class="{active: nav === 'update'}" @click.prevent="gantiMenu('update')">Update</a>
+      <a href="#" :class="{active: nav === 'remove'}" @click.prevent="gantiMenu('remove')">Remove</a>
+    </nav>
+    `,
+      data() {
+        return {
+          name: 'User',
+        }
+      },
+    })
+
+    Vue.component('footer-component', {
+      template: `
+      <footer>
+       <slot></slot>
+     </footer>
+      `
+    })
+
+    Vue.component('main-component', {
+      props: ['items', 'menu'],
+      template: `
+       <div>
+        <div class="img-header">
+          <img :src="kelasImg" alt="brand" width="350">
+        </div>
+        <h4>Tambah Kelas</h4>
+
+        <article>
+          <h4>Menu {{ menu }}</h4>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae temporibus adipisci consequuntur ea
+            quidem
+            itaque ad accusantium aut eum amet molestiae voluptatum quae facere quis, ex veritatis id dignissimos vitae
+            non,
+            minus exercitationem placeat. Suscipit, qui. Dicta voluptate dolore doloribus? Dolor, magni labore vel
+            voluptatibus harum necessitatibus odio hic ad.</p>
+        </article>
+
+        <h3>Daftar Kelas ({{items.length}})</h3>
+
+          <ul v-if="items.length">
+            <li v-for="(item , index) of items">
+              {{ index+1 }} - {{item.judul}}
+              <a href="" @click.prevent="$emit('hapuskelas', index)">Hapus</a>
+            </li>
+          </ul>
+
+        <p v-else>Kelas tidak tersedia</p>
+
+        <aside v-once>
+          Kelas 
+          <code :class="[ isActive ? 'succes' : 'danger' ]" style="padding: 3px;">
+            {{isActive ? 'Complite' : 'Null'}}
+          </code>
+          
+          <ul>
+            <li v-for="fam in family">
+              {{fam}}
+            </li>
+          </ul>
+        </aside>
+
+      </div>
+      `,
+
+      data() {
+        return {
+          family: ['Html', 'Css', 'Js'],
+          isActive: true,
+          kelasImg: 'https://scotch-res.cloudinary.com/image/upload/w_1050,q_auto:good,f_auto/v1559156220/a2dnwyg5xotyhvyhmscj.jpg',
+        }
+      },
+      methods: {
+
+      },
+    })
+
+    const Home = {
+      template: '<div>Home Page</div>'
+    }
+    const About = {
+      template: '<div>About Page</div>'
+    }
+    const Kelas = {
+      props: ['items', 'menu'],
+      template: `
+       <div>
+        <div class="img-header">
+          <img :src="kelasImg" alt="brand" width="350">
+        </div>
+        <h4>Tambah Kelas</h4>
+
+        <form @submit.prevent='submitKelas'>
+          <p><input v-model="kelas.judul" type="text" placeholder="Nama Kelas"></p>
+          <div class="input-group">
+            <label>Deskripsi: </label><br>
+            <textarea v-model="kelas.deskripsi"></textarea>
+          </div>
+
+          <div class="input-group">
+            <label>Masukkan Gambar: </label><br>
+            <input type="file">
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+
+        <article>
+          <h4>Menu {{ menu }}</h4>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae temporibus adipisci consequuntur ea
+            quidem
+            itaque ad accusantium aut eum amet molestiae voluptatum quae facere quis, ex veritatis id dignissimos vitae
+            non,
+            minus exercitationem placeat. Suscipit, qui. Dicta voluptate dolore doloribus? Dolor, magni labore vel
+            voluptatibus harum necessitatibus odio hic ad.</p>
+        </article>
+
+        <h3>Daftar Kelas ({{items.length}})</h3>
+
+          <ul v-if="items.length">
+            <li v-for="(item , index) of items">
+              {{ index+1 }} - {{item.judul}}
+              <a href="" @click.prevent="$emit('hapuskelas', item.id)">Hapus</a>
+            </li>
+          </ul>
+
+        <p v-else>Kelas tidak tersedia</p>
+
+        <aside v-once>
+          Kelas 
+          <code :class="[ isActive ? 'succes' : 'danger' ]" style="padding: 3px;">
+            {{isActive ? 'Complite' : 'Null'}}
+          </code>
+          
+          <ul>
+            <li v-for="fam in family">
+              {{fam}}
+            </li>
+          </ul>
+        </aside>
+
+      </div>
+      `,
+
+      data() {
+        return {
+          family: ['Html', 'Css', 'Js'],
+          isActive: true,
+          kelasImg: 'https://scotch-res.cloudinary.com/image/upload/w_1050,q_auto:good,f_auto/v1559156220/a2dnwyg5xotyhvyhmscj.jpg',
+          kelas: {
+            judul: '',
+            deskripsi: '',
+            gambar: '',
+          }
+        }
+      },
+      methods: {
+        submitKelas() {
+          const data = {
+            id: uuidv4(),
+            judul: this.kelas.judul,
+            deskripsi: this.kelas.deskripsi,
+            gambar: null
+          }
+          this.$emit('submitkelas', data)
+        }
+      },
+    }
+
+
+    const routes = [{
+        path: '/',
+        component: Home
+      },
+      {
+        path: '/about',
+        component: About
+      },
+      {
+        path: '/kelas',
+        component: Kelas
+      }
+
+    ]
+
+    const router = new VueRouter({
+      // mode: 'history',
+      routes // short for `routes: routes`
+    })
+
+    const vm = new Vue({
+      el: '#app',
+      router,
+      components: {
+
+      },
+      data: {
+        kelas: [{
+            id: '1',
+            judul: 'React',
+            deskripsi: 'Framework Frontend',
+            gambar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/555px-Vue.js_Logo_2.svg.png'
+          },
+          {
+            id: '2',
+            judul: 'Vue',
+            deskripsi: 'Framework Frontend',
+            gambar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png'
+          },
+        ]
+      },
+      methods: {
+        hapusKelas(id) {
+          this.kelas = this.kelas.filter(item => item.id != id)
+        },
+        submitKelas(data) {
+          this.kelas.push(data)
+        }
+      },
+      computed: {},
+    })
+  </script>
+</body>
+
+</html>

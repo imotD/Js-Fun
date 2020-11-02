@@ -295,6 +295,9 @@
       },
     }
 
+    const NotFound = {
+      template: '<div>404 Halaman Tidak Ditemukan</div>'
+    }
 
     const routes = [{
         path: '/',
@@ -307,6 +310,10 @@
       {
         path: '/kelas',
         component: Kelas
+      },
+      {
+        path: '*',
+        component: NotFound
       }
 
     ]

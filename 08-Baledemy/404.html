@@ -359,19 +359,23 @@
 
       },
       data: {
-        kelas: [{
-            id: '1',
-            judul: 'React',
-            deskripsi: 'Framework Frontend',
-            gambar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/555px-Vue.js_Logo_2.svg.png'
-          },
-          {
-            id: '2',
-            judul: 'Vue',
-            deskripsi: 'Framework Frontend',
-            gambar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png'
-          },
-        ]
+        // kelas: [{
+        //     id: '1',
+        //     judul: 'React',
+        //     deskripsi: 'Framework Frontend',
+        //     gambar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/555px-Vue.js_Logo_2.svg.png'
+        //   },
+        //   {
+        //     id: '2',
+        //     judul: 'Vue',
+        //     deskripsi: 'Framework Frontend',
+        //     gambar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png'
+        //   },
+        // ]
+        kelas: []
+      },
+      created() {
+        this.kelas = JSON.parse(localStorage.getItem('kelas')) || []
       },
       methods: {
         hapusKelas(id) {
@@ -379,6 +383,7 @@
         },
         submitKelas(data) {
           this.kelas.push(data)
+          localStorage.setItem('kelas', JSON.stringify(this.kelas))
         }
       },
       computed: {},

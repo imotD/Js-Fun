@@ -73,6 +73,15 @@
       text-align: center;
       margin: 15px 0;
     }
+
+    .input-group {
+      margin: 10px 0;
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+    }
   </style>
 </head>
 
@@ -204,10 +213,14 @@
         <h4>Tambah Kelas</h4>
 
         <form @submit.prevent='submitKelas'>
-          <p><input v-model="kelas.judul" type="text" placeholder="Nama Kelas"></p>
+          <div class="input-group">
+            <input v-model="kelas.judul" type="text" placeholder="Nama Kelas">
+            <span class="error">{{error.judul }}</span>
+          </div>
           <div class="input-group">
             <label>Deskripsi: </label><br>
             <textarea v-model="kelas.deskripsi"></textarea>
+            <span class="error">{{error.deskripsi }}</span>
           </div>
 
           <div class="input-group">
@@ -268,24 +281,40 @@
             deskripsi: '',
             gambar: '',
           },
-          previewImg: ''
+          previewImg: '',
+          error: {
+            judul: '',
+            deskripsi: ''
+          }
         }
       },
       methods: {
         submitKelas() {
-          const data = {
-            id: uuidv4(),
-            judul: this.kelas.judul,
-            deskripsi: this.kelas.deskripsi,
-            gambar: this.kelas.gambar
-          }
-          this.$emit('submitkelas', data)
+          this.error.judul = ''
+          this.error.deskripsi = ''
 
-          this.kelas.judul = ''
-          this.kelas.deskripsi = ''
-          this.kelas.gambar = ''
-          this.kelas.previewImg = ''
-          this.$refs.gambar.value = ''
+          if (this.kelas.judul == '') {
+            this.error.judul = "Judul is Required"
+          }
+          if (this.kelas.deskripsi == '') {
+            this.error.deskripsi = "Deskripsi is Required"
+          }
+
+          if (this.kelas.judul && this.kelas.deskripsi) {
+            const data = {
+              id: uuidv4(),
+              judul: this.kelas.judul,
+              deskripsi: this.kelas.deskripsi,
+              gambar: this.kelas.gambar
+            }
+            this.$emit('submitkelas', data)
+
+            this.kelas.judul = ''
+            this.kelas.deskripsi = ''
+            this.kelas.gambar = ''
+            this.previewImg = ''
+            this.$refs.gambar.value = ''
+          }
         },
         upload(event) {
           const namagambar = event.target.files[0].name

@@ -368,13 +368,19 @@
       methods: {
         hapusKelas(id) {
           this.kelas = this.kelas.filter(item => item.id != id)
+          localStorage.setItem('kelas', JSON.stringify(this.kelas))
+
+          swal({
+            text: "Data Berhasil di Hapus",
+            icon: "warning",
+          });
         },
         submitKelas(data) {
           this.kelas.push(data)
           localStorage.setItem('kelas', JSON.stringify(this.kelas))
 
           swal({
-            title: "Bagus",
+            title: `Kelas ${data.judul}`,
             text: "Data Berhasil di Simpan",
             icon: "success",
           });

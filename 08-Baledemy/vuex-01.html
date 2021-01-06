@@ -29,7 +29,9 @@
         title: 'Vuejs'
       },
       mutations: {
-
+        increment(state) {
+          state.count++
+        }
       },
       actions: {
 
@@ -41,7 +43,7 @@
       data: {},
       methods: {
         tambah() {
-          this.$store.state.count++
+          this.$store.commit('increment')
         }
       },
       store

@@ -14,8 +14,10 @@
 
 <body>
   <div id="app">
-    <h1>{{title}}</h1>
+    <h1>{{$store.state.title}}</h1>
+    <span>{{$store.state.count}}</span>
     <p>State Management Pattern</p>
+    <button @click='tambah'>Hitung</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
@@ -37,6 +39,11 @@
     new Vue({
       el: '#app',
       data: {},
+      methods: {
+        tambah() {
+          this.$store.state.count++
+        }
+      },
       store
     })
   </script>

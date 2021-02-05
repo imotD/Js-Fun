@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Suwit Jawa v1</title>
+</head>
+
+<body>
+
+  <script>
+    var kesempatan = 3;
+    var tanya = true
+    var comp = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+
+    while (tanya) {
+      for (i = kesempatan; i >= 0; i--) {
+        var p = prompt('Tebak Angka 1-10');
+        
+        if (p == comp) {
+          alert(`Tebakan kamu benar!. Angka yang di cari memang ${p}`)
+        } else if (p <= comp) {
+          alert(`Angka terlalu Rendah. Kesempatan kamu tinggal ${j}`)
+
+        } else if (p >= comp) {
+          alert(`Angka yang kamu masukan terlalu Tinggi. Kesempatan kamu tinggal ${j}`)
+        } else {
+          alert(`pilihan yang kamu masukan tidak sesuai`)
+        }
+
+      }
+      tanya = confirm(`Main lagi  ?`);
+    }
+
+    alert('terimakasih sudah ikut bermain');
+  </script>
+</body>
+
+</html>

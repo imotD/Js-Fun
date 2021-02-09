@@ -3,3 +3,4 @@ fruits.shift("Kiwi");
 console.log(fruits.join(" - "));
 
 // shift = menghapus item dari yang paling depan
+// mengeluarkan/ menggeser keluar

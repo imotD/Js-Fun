@@ -33,3 +33,6 @@ angkot1.penumpangNaik("icha");
 angkot1.penumpangTurun("icha", 7000);
 angkot1.penumpangTurun("ina", 5000);
 console.log(angkot1);
+
+// var ai = prompt("Siapa nama kamu ?");
+// console.log(ai);

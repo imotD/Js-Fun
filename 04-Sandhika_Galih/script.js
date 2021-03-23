@@ -38,3 +38,32 @@ p2.classList.toggle("label");
 p2.classList.item(1); //seperti array
 p2.classList.contains("label"); //pengecekan
 p2.classList.replace("label", "baru"); //pergantian
+
+// DOM Part 2
+// create new element
+const pn = document.createElement("p");
+const tn = document.createTextNode("Paragraf ke 4");
+// simpan tulisan ke dalam paragraf
+pn.appendChild(tn);
+const secA = document.getElementById("a");
+secA.appendChild(pn);
+
+// insertBefore
+const list = document.createElement("li");
+const litext = document.createTextNode("item baru");
+list.appendChild(litext);
+const ul = document.querySelector("section#b ul");
+const li2 = ul.querySelector("li:nth-child(2)");
+ul.insertBefore(list, li2);
+
+//remove child
+const delLInk = document.getElementsByTagName("a")[0];
+secA.removeChild(delLInk);
+
+//replace child
+const secB = document.getElementById("b");
+const replP = secB.querySelector("p");
+const replN = document.createElement("h2");
+const repTx = document.createTextNode("Baru Cuy");
+replN.appendChild(repTx);
+secB.replaceChild(replN, replP);

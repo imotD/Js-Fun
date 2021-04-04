@@ -67,3 +67,21 @@ const replN = document.createElement("h2");
 const repTx = document.createTextNode("Baru Cuy");
 replN.appendChild(repTx);
 secB.replaceChild(replN, replP);
+
+//// EVENT///
+const evp3 = document.querySelector(".p3");
+function ubahWarna() {
+  evp3.style.backgroundColor = "pink";
+}
+
+const evp2 = document.querySelector(".p2");
+evp2.onclick = ubahWarna;
+
+const pesta = document.querySelector("section#b .click");
+pesta.addEventListener("click", function () {
+  const ul = document.querySelector("section#b ul");
+  const li = document.createElement("li");
+  const txt = document.createTextNode("item click");
+  li.appendChild(txt);
+  ul.appendChild(li);
+});

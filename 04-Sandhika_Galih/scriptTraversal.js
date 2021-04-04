@@ -18,16 +18,25 @@ const allCards = document.querySelectorAll(".card");
 
 //alternatif menggunakan forEach
 
-allClose.forEach(function (el) {
-  el.addEventListener("click", function (e) {
+// allClose.forEach(function (el) {
+//   el.addEventListener("click", function (e) {
+//     e.target.parentElement.style.display = "none";
+//     e.preventDefault();
+//     e.stopPropagation();
+//   });
+// });
+
+// allCards.forEach(function (el) {
+//   el.addEventListener("click", function (e) {
+//     alert("Hey");
+//   });
+// });
+
+// Dom Traversal Efektif
+const container = document.querySelector(".container");
+container.addEventListener("click", function (e) {
+  if (e.target.className == "close") {
     e.target.parentElement.style.display = "none";
     e.preventDefault();
-    e.stopPropagation();
-  });
-});
-
-allCards.forEach(function (el) {
-  el.addEventListener("click", function (e) {
-    alert("Hey");
-  });
+  }
 });

@@ -20,5 +20,6 @@ const all = document.querySelectorAll(".close");
 all.forEach(function (el) {
   el.addEventListener("click", function (e) {
     e.target.parentElement.style.display = "none";
+    e.preventDefault();
   });
 });

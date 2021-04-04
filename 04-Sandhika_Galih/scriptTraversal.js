@@ -7,19 +7,27 @@ const card = document.querySelector(".card");
 
 //DOM Traversal -- penulusuran
 
-const all = document.querySelectorAll(".close");
+const allClose = document.querySelectorAll(".close");
+const allCards = document.querySelectorAll(".card");
 
-// for (let i = 0; i < all.length; i++) {
-//   all[i].addEventListener("click", function (e) {
+// for (let i = 0; i < allClose.length; i++) {
+//   allClose[i].addEventListener("click", function (e) {
 //     e.target.parentElement.style.display = "none";
 //   });
 // }
 
 //alternatif menggunakan forEach
 
-all.forEach(function (el) {
+allClose.forEach(function (el) {
   el.addEventListener("click", function (e) {
     e.target.parentElement.style.display = "none";
     e.preventDefault();
+    e.stopPropagation();
+  });
+});
+
+allCards.forEach(function (el) {
+  el.addEventListener("click", function (e) {
+    alert("Hey");
   });
 });

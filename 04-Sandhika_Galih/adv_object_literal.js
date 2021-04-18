@@ -11,3 +11,5 @@ let mahasiswa = {
 };
 
 mahasiswa.makan(10);
+
+//Problem tidak efektif untuk objek yang banyak saran menggunakan obj declaration

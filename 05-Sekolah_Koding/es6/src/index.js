@@ -1,21 +1,9 @@
-// * Ini adalah Default Parameter
+// * Ini adalah Spread dan Rest
 
-generateTitle = () => {
-    return "ini parameter"
+signIn = (username, password, umur) => {
+    console.log(username + ' password ' + password + ' umur ' + umur)
 }
 
+let data = ['imotd', '123', '25']
 
-contoh1 = (title, tag = 'default') => {
-    console.log(title + ' punya tag ' + tag)
-}
-contoh2 = (title, tag) => {
-    tag = tag || 'default'
-    console.log(title + ' punya tag ' + tag)
-}
-contoh3 = (title = generateTitle(), tag = "default") => {
-    console.log(title + ' punya tag ' + tag)
-}
-
-contoh1("Belajar", "HTML")
-contoh2("Belajar", "HTML")
-contoh3()
+signIn(...data)

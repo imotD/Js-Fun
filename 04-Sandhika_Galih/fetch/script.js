@@ -1,33 +1,75 @@
 // * Fetch Moment
-const searchButton = document.querySelector(".btn-search");
-searchButton.addEventListener("click", function() {
-  let inputKeyword = document.querySelector(".input-keyword");
-  fetch(`http://www.omdbapi.com/?apikey=dca61bcc&s=${inputKeyword.value}`)
-    .then(result => result.json())
-    .then(result => {
-      const movie = result.Search;
-      let card = "";
-      movie.forEach(m => {
-        card += showCard(m);
-        const mainContainer = document.querySelector(".main-container");
-        mainContainer.innerHTML = card;
-      });
+// const searchButton = document.querySelector(".btn-search");
+// searchButton.addEventListener("click", function() {
+//   let inputKeyword = document.querySelector(".input-keyword");
+//   fetch(`http://www.omdbapi.com/?apikey=dca61bcc&s=${inputKeyword.value}`)
+//     .then(result => result.json())
+//     .then(result => {mant
+//       const movie = result.Search;
+//       let card = "";
+//       movie.forEach(m => {
+//         card += showCard(m);
+//         const mainContainer = document.querySelector(".main-container");
+//         mainContainer.innerHTML = card;
+//       });
 
-      const details = document.querySelectorAll(".card-detail");
-      details.forEach(btn => {
-        btn.addEventListener("click", function() {
-          const imdbid = this.dataset.imdb;          
-          fetch(`http://www.omdbapi.com/?apikey=dca61bcc&i=${imdbid}`)
-            .then(result => result.json())
-            .then(result => {
-              const moveDetail = showDetail(result);
-              const moveDetailResult = document.querySelector(".modalDetails");
-              moveDetailResult.innerHTML = moveDetail;
-            });
-        });
-      });
-    });
+//       const details = document.querySelectorAll(".card-detail");
+//       details.forEach(btn => {
+//         btn.addEventListener("click", function() {
+//           const imdbid = this.dataset.imdb;
+//           fetch(`http://www.omdbapi.com/?apikey=dca61bcc&i=${imdbid}`)
+//             .then(result => result.json())
+//             .then(result => {
+//               const moveDetail = showDetail(result);
+//               const moveDetailResult = document.querySelector(".modalDetails");
+//               moveDetailResult.innerHTML = moveDetail;
+//             });
+//         });
+//       });
+//     });
+// });
+
+// * Refactoring Async Await
+const searchButton = document.querySelector(".btn-search");
+searchButton.addEventListener("click", async function() {
+  const inputKeyword = document.querySelector(".input-keyword");
+  const movies = await getMovies(inputKeyword.value);
+  updateUI(movies);
 });
+
+// * event binding
+document.addEventListener("click", async function(e) {
+  if (e.target.classList.contains("card-detail")) {
+    const imdbid = e.target.dataset.imdb;
+    const movieDetail = await getMovieDetail(imdbid);
+    updateUIDetail(movieDetail);
+  }
+});
+
+function getMovies(keyword) {
+  return fetch(`http://www.omdbapi.com/?apikey=dca61bcc&s=${keyword}`)
+    .then(result => result.json())
+    .then(result => result.Search);
+}
+
+function updateUI(movies) {
+  let cards = "";
+  movies.forEach(m => (cards += showCard(m)));
+  const movieContainer = document.querySelector(".main-container");
+  movieContainer.innerHTML = cards;
+}
+
+function getMovieDetail(id) {
+  return fetch(`http://www.omdbapi.com/?apikey=dca61bcc&i=${id}`)
+    .then(result => result.json())
+    .then(result => result);
+}
+
+function updateUIDetail(result) {
+  const moveDetail = showDetail(result);
+  const moveDetailResult = document.querySelector(".modalDetails");
+  moveDetailResult.innerHTML = moveDetail;
+}
 
 function showCard(m) {
   return `

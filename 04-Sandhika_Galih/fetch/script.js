@@ -32,24 +32,60 @@
 // * Refactoring Async Await
 const searchButton = document.querySelector(".btn-search");
 searchButton.addEventListener("click", async function() {
-  const inputKeyword = document.querySelector(".input-keyword");
-  const movies = await getMovies(inputKeyword.value);
-  updateUI(movies);
+  try {
+    const inputKeyword = document.querySelector(".input-keyword");
+    const movies = await getMovies(inputKeyword.value);
+    updateUI(movies);
+  } catch (error) {
+    let err = showErr(error);
+    const alertButton = document.querySelector("#msg");
+    alertButton.innerHTML = err;
+  }
 });
 
 // * event binding
 document.addEventListener("click", async function(e) {
   if (e.target.classList.contains("card-detail")) {
-    const imdbid = e.target.dataset.imdb;
-    const movieDetail = await getMovieDetail(imdbid);
-    updateUIDetail(movieDetail);
+    try {
+      const imdbid = e.target.dataset.imdb;
+      const movieDetail = await getMovieDetail(imdbid);
+      updateUIDetail(movieDetail);
+    } catch (error) {
+      alert(error);
+      // let err = showErr(error);
+      // const alertButton = document.querySelector("#msg");
+      // alertButton.innerHTML = err;
+    }
   }
 });
 
+function showErr(msg) {
+  return `
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong> ${msg} </strong>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    />
+  </div>`;
+}
+
 function getMovies(keyword) {
   return fetch(`http://www.omdbapi.com/?apikey=dca61bcc&s=${keyword}`)
-    .then(result => result.json())
-    .then(result => result.Search);
+    .then(result => {
+      if (!result.ok) {
+        throw new Error(result.statusText);
+      }
+      return result.json();
+    })
+    .then(result => {
+      if (result.Response === "False") {
+        throw new Error(result.Error);
+      }
+      return result.Search;
+    });
 }
 
 function updateUI(movies) {
@@ -61,8 +97,18 @@ function updateUI(movies) {
 
 function getMovieDetail(id) {
   return fetch(`http://www.omdbapi.com/?apikey=dca61bcc&i=${id}`)
-    .then(result => result.json())
-    .then(result => result);
+    .then(result => {
+      if (!result.ok) {
+        throw new Error(result.statusText);
+      }
+      return result.json();
+    })
+    .then(result => {
+      if (!result) {
+        throw new Error(result.Error);
+      }
+      return result;
+    });
 }
 
 function updateUIDetail(result) {

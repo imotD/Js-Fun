@@ -12,4 +12,4 @@ function Manager(firstname, lastname) {
 
 const eko = new Manager('Eko', 'Bilar')
 
-console.info(eko)
+console.info(eko.sayHello('tommy'))

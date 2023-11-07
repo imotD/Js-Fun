@@ -1,6 +1,7 @@
 function Person(firstname, lastname) {
   this.firstname = firstname
   this.lastname = lastname
+  //method
   this.sayHello = function (name) {
     console.info(`Hello ${name}, my name is ${this.firstname}`)
   }
